@@ -31,7 +31,7 @@ st.markdown(
 # Load the data
 @st.cache_data
 def load_data():
-    return pd.read_csv("coursea_data.csv")
+    return pd.read_csv("./Dataset/coursea_data.csv")
 
 data_load_state = st.text('Loading data...')
 data = load_data()
@@ -90,21 +90,6 @@ def recommend(subject, rating, difficulty, num_recommendations=5):
         })
 
     return recommended_courses
-
-# Example Recommendation
-example_subject = "Data Science"
-example_rating = 4.5
-example_difficulty = "Intermediate"
-example_recommended_courses = recommend(example_subject, example_rating, example_difficulty)
-if example_recommended_courses:
-    st.subheader("Example Recommendation:")
-    for i, course in enumerate(example_recommended_courses, 1):
-        st.write(f"{i}. Course Title: {course['Course Title']}")
-        st.write(f"   Organization: {course['Organization']}")
-        st.write(f"   Certificate Type: {course['Certificate Type']}")
-        st.write(f"   Rating: {course['Rating']}")
-        st.write(f"   Students Enrolled: {course['Students Enrolled']}")
-        st.write(f"   Similarity: {course['Similarity']}")
 
 # Main content area for user input
 st.subheader("Custom Recommendation:")
